@@ -1,0 +1,48 @@
+import {Column, CreateDateColumn, Entity,PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm"
+import { UserRole, UserStatus } from "../enums/user.enum"
+
+@Entity()
+export class User {
+    @PrimaryGeneratedColumn()
+    id : number
+    
+    @Column()
+    firstname : string
+
+    @Column()
+    lastname : string
+
+    @Column({unique:true})
+    email : string
+    
+    @Column()
+    password : string 
+
+    @Column()
+    birthday : Date 
+
+    @Column({
+        type: "enum",
+        enum : UserStatus,
+        default:UserStatus.ACTIVE
+    })
+    status : UserStatus 
+
+    @Column({nullable: true })
+    avatar : string 
+
+    @CreateDateColumn()
+    createdAt : Date 
+    
+    @UpdateDateColumn()
+    updateddAt : Date
+
+    @Column({
+        type: "enum",
+        enum : UserRole,
+        default:UserRole.STUDENT
+        
+    }) 
+    role : UserRole
+
+}
