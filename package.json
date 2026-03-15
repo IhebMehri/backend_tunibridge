@@ -1,0 +1,29 @@
+{
+  "name": "backend_tunibridge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IhebMehri/backend_tunibridge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IhebMehri/backend_tunibridge/issues"
+  },
+  "homepage": "https://github.com/IhebMehri/backend_tunibridge#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@types/node": "^25.5.0",
+    "ts-node": "^10.9.2"
+  }
+}
