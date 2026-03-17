@@ -5,11 +5,12 @@ export interface IUser {
     id: number;
     firstname: string;
     lastname: string;
+    password: string;
     email: string;
     birthday: Date;
     status :UserStatus;
     avatar: string;
-    role :UserRole
+    role? :UserRole
 
     
 }

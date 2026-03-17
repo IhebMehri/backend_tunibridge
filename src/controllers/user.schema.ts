@@ -9,8 +9,13 @@ export const ValidateUserSchema= z.object({
     birthday :z.string(),
     status :z.enum(UserStatus),
     avatar:z.string().min(6,"Avatar must be at least 6 caracters"),
-    role :z.enum(UserRole),
+    
 
 
 })
 ;
+
+export const ValidateSignInSchema= z.object({
+       email:z.email("Unvalid email adress"),
+    password :z.string().min(8,"Password must be at least 8 caracters"),
+});
