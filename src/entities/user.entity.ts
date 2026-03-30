@@ -1,5 +1,6 @@
-import {Column, CreateDateColumn, Entity,PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm"
+import {Column, CreateDateColumn, Entity,OneToMany,PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm"
 import { UserRole, UserStatus } from "../enums/user.enum"
+
 
 @Entity()
 export class User {
@@ -44,5 +45,7 @@ export class User {
         
     }) 
     role : UserRole
+
+   
 
 }

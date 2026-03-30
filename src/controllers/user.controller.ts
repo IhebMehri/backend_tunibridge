@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt"; 
 import {Request, Response} from "express";
 import { UserService } from "../services/user.service";
@@ -6,11 +7,6 @@ import { ValidateUserSchema ,ValidateSignInSchema } from "./user.schema";
 
 
 const userService = new UserService();
-//To DO :
-//Get users 
-//Get user by id
-//Update user 
-//delete user
 
 
 
@@ -148,12 +144,38 @@ export const signIn = async(req: Request, res: Response) => {
  
     if (!isPasswordValid)
     {
-      return res.status(400).json({ message:"Unvalid password"});
+      return res.status(400).json({ message:"Invalid password"});
     }
-    return res.status(200).json({ message:"User Connected"});
-    
+      const token = jwt.sign(
+      {
+        id: existingUser.id,
+        email: existingUser.email,
+        role: existingUser.role
+      },
+      process.env.JWT_SECRET as string,
+      {
+        expiresIn: "1d"
+      }
+    );
+
+    return res.status(200).json({
+      message: "User connected successfully",
+      token,
+      user: {
+        id: existingUser.id,
+        firstname: existingUser.firstname,
+        lastname: existingUser.lastname,
+        email: existingUser.email,
+        role: existingUser.role,
+        status: existingUser.status
+      }
+    });
+  }
+  
 
 
 
-}
+
+
+
 

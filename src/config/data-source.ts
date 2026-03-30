@@ -1,6 +1,9 @@
 import "reflect-metadata"
 import {DataSource} from "typeorm"
 import { User } from "../entities/user.entity"
+import { Event } from "../entities/event.entity"
+import { Institution } from "../entities/institution.entity"
+import { Parcours } from "../entities/parcours.entity";
 
 
 export const AppDataSource = new DataSource({
@@ -12,5 +15,5 @@ export const AppDataSource = new DataSource({
     database : "tunibridge",
     synchronize : true,
     logging : false,
-    entities : [User],
+    entities : [User , Event, Institution, Parcours],
 })
