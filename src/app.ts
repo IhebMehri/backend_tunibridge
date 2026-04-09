@@ -1,9 +1,13 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+import cors from "cors" ;
 import parcoursRoutes from "./routes/parcours.route";
 import institutionRoutes from "./routes/institution.route";
 import eventRoutes from "./routes/event.route";
+import formationRoutes from "./routes/formation.route";
+import dossierRoutes from "./routes/dossier.route";
+
 import express from 'express';
 import userRoutes from './routes/user.route';
 import { AppDataSource } from './config/data-source';
@@ -22,10 +26,14 @@ const PORT :number = 5000;
 
 app.use(express.urlencoded({extended: true}));
 
+app.use(cors({origin : "*" }))
+
 app.use('/users', userRoutes,);
 app.use("/events", eventRoutes);
 app.use("/institutions", institutionRoutes);
 app.use("/parcours", authMiddleware,parcoursRoutes);
+app.use("/formations", formationRoutes);
+app.use("/dossiers", dossierRoutes);
 
 
 AppDataSource.initialize().then(()=>{

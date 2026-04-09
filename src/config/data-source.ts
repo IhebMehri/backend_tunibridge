@@ -4,16 +4,18 @@ import { User } from "../entities/user.entity"
 import { Event } from "../entities/event.entity"
 import { Institution } from "../entities/institution.entity"
 import { Parcours } from "../entities/parcours.entity";
+import { Formation } from "../entities/formation.entity";
+import { Dossier } from "../entities/dossier.entity";
 
 
 export const AppDataSource = new DataSource({
     type :"postgres",
     host : "localhost",
-    port : 5432,
+    port : 5432,    
     username : "postgres",
     password : "123",
     database : "tunibridge",
     synchronize : true,
     logging : false,
-    entities : [User , Event, Institution, Parcours],
+    entities : [User , Event, Institution, Parcours, Formation, Dossier],
 })

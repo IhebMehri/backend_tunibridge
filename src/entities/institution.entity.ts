@@ -3,8 +3,10 @@ import {
   PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  UpdateDateColumn
+  UpdateDateColumn,
+  OneToMany
 } from "typeorm";
+import { Formation } from "./formation.entity";
 
 @Entity()
 export class Institution {
@@ -35,6 +37,9 @@ export class Institution {
 
   @Column({ default: false })
   verified: boolean;
+
+  @OneToMany(() => Formation, formation => formation.institution)
+  formations: Formation[];
 
   @CreateDateColumn()
   createdAt: Date;

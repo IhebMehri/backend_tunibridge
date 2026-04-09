@@ -1,5 +1,8 @@
-import {Column, CreateDateColumn, Entity,OneToMany,PrimaryGeneratedColumn, UpdateDateColumn} from "typeorm"
+import {Column, CreateDateColumn, Entity,OneToMany,PrimaryGeneratedColumn, UpdateDateColumn, ManyToMany, JoinTable} from "typeorm"
 import { UserRole, UserStatus } from "../enums/user.enum"
+import { Parcours } from "./parcours.entity"
+import { Event } from "./event.entity"
+import { Formation } from "./formation.entity"
 
 
 @Entity()
@@ -46,6 +49,15 @@ export class User {
     }) 
     role : UserRole
 
-   
+    @OneToMany(() => Parcours, parcours => parcours.user)
+    parcours: Parcours[]
+
+    @ManyToMany(() => Event, event => event.users)
+    @JoinTable()
+    events: Event[]
+
+    @ManyToMany(() => Formation, formation => formation.users)
+    @JoinTable()
+    formations: Formation[]
 
 }
